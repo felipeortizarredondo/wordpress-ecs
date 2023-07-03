@@ -32,14 +32,14 @@ else
   sed -i "s|define('DB_USER', '.*');|define('DB_USER', '$db_user');|g" wp-config.php
   sed -i "s|define('DB_PASSWORD', '.*');|define('DB_PASSWORD', '$db_password');|g" wp-config.php
   sed -i "s|define('DB_HOST', '.*');|define('DB_HOST', '$db_host');|g" wp-config.php
-  sed -i "s|define('AUTH_KEY',);|define('AUTH_KEY', '$db_password');|g" wp-config.php
-  sed -i "s|define('SECURE_AUTH_KEY',);|define('SECURE_AUTH_KEY', '$db_password');|g" wp-config.php
-  sed -i "s|define('LOGGED_IN_KEY',);|define('LOGGED_IN_KEY', '$db_password');|g" wp-config.php
-  sed -i "s|define('NONCE_KEY',);|define('NONCE_KEY', '$db_password');|g" wp-config.php
-  sed -i "s|define('AUTH_SALT',);|define('AUTH_SALT', '$db_password');|g" wp-config.php
-  sed -i "s|define('SECURE_AUTH_SALT',);|define('SECURE_AUTH_SALT', '$db_password');|g" wp-config.php
-  sed -i "s|define('LOGGED_IN_SALT',);|define('LOGGED_IN_SALT', '$db_password');|g" wp-config.php
-  sed -i "s|define('NONCE_SALT',);|define('NONCE_SALT', '$db_password');|g" wp-config.php
+  sed -i "s|define('AUTH_KEY',         '');|define('AUTH_KEY',         '$db_password');|g" wp-config.php
+  sed -i "s|define('SECURE_AUTH_KEY',  '');|define('SECURE_AUTH_KEY',  '$db_password');|g" wp-config.php
+  sed -i "s|define('LOGGED_IN_KEY',    '');|define('LOGGED_IN_KEY',    '$db_password');|g" wp-config.php
+  sed -i "s|define('NONCE_KEY',        '');|define('NONCE_KEY',        '$db_password');|g" wp-config.php
+  sed -i "s|define('AUTH_SALT',        '');|define('AUTH_SALT',        '$db_password');|g" wp-config.php
+  sed -i "s|define('SECURE_AUTH_SALT', '');|define('SECURE_AUTH_SALT', '$db_password');|g" wp-config.php
+  sed -i "s|define('LOGGED_IN_SALT',   '');|define('LOGGED_IN_SALT',   '$db_password');|g" wp-config.php
+  sed -i "s|define('NONCE_SALT',       '');|define('NONCE_SALT',       '$db_password');|g" wp-config.php
 
   echo "Variables de entorno actualizadas en el wp-config.php."
 fi
@@ -68,13 +68,15 @@ elif [ $db_exists -eq 0 ]; then
 elif [ $user_exists -eq 0 ]; then
   echo "El usuario '$db_user' ya existe. Saltando la creación del usuario."
 else
-
-# Crear la base de datos y otorgar privilegios
-mysql -h $db_host -P 3306 -u $db_user_rds -p$db_password_rds <<EOF
+  # Crear la base de datos y otorgar privilegios
+  mysql -h $db_host -P 3306 -u $db_user_rds -p$db_password_rds <<EOF
 CREATE DATABASE $db_name;
 CREATE USER '$db_user'@'%' IDENTIFIED BY '$db_password';
 GRANT ALL PRIVILEGES ON $db_name.* TO '$db_user'@'%';
 FLUSH PRIVILEGES;
 EOF
-
 fi
+
+echo
+echo "El script ha finalizado correctamente."
+
