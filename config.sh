@@ -65,4 +65,4 @@ GRANT ALL PRIVILEGES ON $db_name.* TO '$db_user'@'%';
 FLUSH PRIVILEGES;
 EOF
 
-echo "La base de datos '$db_name' ha sido creada y se han otorgado los privilegios correctamente."
+fi
