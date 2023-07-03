@@ -32,14 +32,14 @@ else
   sed -i "s|define('DB_USER', '.*');|define('DB_USER', '$db_user');|g" wp-config.php
   sed -i "s|define('DB_PASSWORD', '.*');|define('DB_PASSWORD', '$db_password');|g" wp-config.php
   sed -i "s|define('DB_HOST', '.*');|define('DB_HOST', '$db_host');|g" wp-config.php
-  sed -i "s|define('AUTH_KEY', '.*');|define('AUTH_KEY', '$db_password');|g" wp-config.php
-  sed -i "s|define('SECURE_AUTH_KEY', '.*');|define('SECURE_AUTH_KEY', '$db_password');|g" wp-config.php
-  sed -i "s|define('LOGGED_IN_KEY', '.*');|define('LOGGED_IN_KEY', '$db_password');|g" wp-config.php
-  sed -i "s|define('NONCE_KEY', '.*');|define('NONCE_KEY', '$db_password');|g" wp-config.php
-  sed -i "s|define('AUTH_SALT', '.*');|define('AUTH_SALT', '$db_password');|g" wp-config.php
-  sed -i "s|define('SECURE_AUTH_SALT', '.*');|define('SECURE_AUTH_SALT', '$db_password');|g" wp-config.php
-  sed -i "s|define('LOGGED_IN_SALT', '.*');|define('LOGGED_IN_SALT', '$db_password');|g" wp-config.php
-  sed -i "s|define('NONCE_SALT', '.*');|define('NONCE_SALT', '$db_password');|g" wp-config.php
+  sed -i "s|define('AUTH_KEY', '');|define('AUTH_KEY', '$db_password');|g" wp-config.php
+  sed -i "s|define('SECURE_AUTH_KEY', '');|define('SECURE_AUTH_KEY', '$db_password');|g" wp-config.php
+  sed -i "s|define('LOGGED_IN_KEY', '');|define('LOGGED_IN_KEY', '$db_password');|g" wp-config.php
+  sed -i "s|define('NONCE_KEY', '');|define('NONCE_KEY', '$db_password');|g" wp-config.php
+  sed -i "s|define('AUTH_SALT', '');|define('AUTH_SALT', '$db_password');|g" wp-config.php
+  sed -i "s|define('SECURE_AUTH_SALT', '');|define('SECURE_AUTH_SALT', '$db_password');|g" wp-config.php
+  sed -i "s|define('LOGGED_IN_SALT', '');|define('LOGGED_IN_SALT', '$db_password');|g" wp-config.php
+  sed -i "s|define('NONCE_SALT', '');|define('NONCE_SALT', '$db_password');|g" wp-config.php
 
   echo "Variables de entorno actualizadas en el wp-config.php."
 fi
